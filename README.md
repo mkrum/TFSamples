@@ -29,11 +29,15 @@ Methods for using virtualenv, anaconda, and docker can be found at: https://www.
 The TensorFlow setup on the CRC machines is optimized for its GPU, making it much faster. To run a TensorFlow program on a CRC machine, use the following template for your job script:
 
 job.script:
-<pre><code>\#!/bin/csh  
-\#$ -q gpu@qa-titanx-001  
-\#$ -M <your email>
-\#$ -m abe  
-\#$ -N <name of your job>
+
+
+<code>
+
+#!/bin/csh  
+#$ -q gpu@qa-titanx-001  
+#$ -M <your email>
+#$ -m abe  
+#$ -N <name of your job>
    
 module load python/2.7.11  
 module load tensorflow/0.8  
@@ -42,7 +46,11 @@ module load cudnn/v4
 setenv CUDA_VISIBLE_DEVICES 0 
 
 ./tfscript.py
-<\code><\pre>
+
+
+</code>
+
+
 
 If you want to run two scripts at once, make sure to have the CUDA_VISIBLE_DEVICES set to different values  (0 or 1).
 
