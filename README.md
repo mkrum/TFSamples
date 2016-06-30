@@ -18,21 +18,21 @@ Linux:
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl 
 $ sudo pip install --upgrade $TF_BINARY_URL 
 </code></pre>
-Methods for using virtualenv, anaconda, and docker can be found (here) [https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html]
+Methods for using virtualenv, anaconda, and docker can be found [here] (https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html)
 
 ###1.2.	CRC Machines
 
 The TensorFlow setup on the CRC machines is optimized for its GPU, making it much faster. To run a TensorFlow program on a CRC machine, use the following template for your job script:
 
-(job.script) [https://github.com/mkrum/TFSamples/blob/master/job.script]:
+[job.script] (https://github.com/mkrum/TFSamples/blob/master/job.script):
 
 <pre><code>
 
-\#!/bin/csh  
-\#$ -q gpu@qa-titanx-001  
-\#$ -M <your email>
-\#$ -m abe  
-\#$ -N <name of your job>
+#!/bin/csh  
+#$ -q gpu@qa-titanx-001  
+#$ -M <your email>
+#$ -m abe  
+#$ -N <name of your job>
    
 module load python/2.7.11  
 module load tensorflow/0.8  
@@ -49,14 +49,13 @@ setenv CUDA_VISIBLE_DEVICES 0
 
 If you want to run two scripts at once, make sure to have the CUDA_VISIBLE_DEVICES set to different values  (0 or 1).
 
-You submit job scripts by using the command:
-<pre><code>
-qsub job.script
-</pre></code>
+You submit job scripts by using the command: qsub job.script
+
 ###1.3.	Test Installation
+
 To ensure your setup works, attempt to run the following code:
 
-(helloworld.py) [https://github.com/mkrum/TFSamples/blob/master/helloworld.py]:
+[helloworld.py:] (https://github.com/mkrum/TFSamples/blob/master/helloworld.py)
 
 <pre><code>
 
@@ -74,7 +73,7 @@ TensorFlow™ is an open source software library for numerical computation using
 ##3.	TensorFlow Tutorial
 ###3.1.	Writing code in TensorFlow isn’t like other python programs. Here is a small example using the quadratic equation:
 
-(quadratic.py) [https://github.com/mkrum/TFSamples/blob/master/quadratic.py]:
+[quadratic.py:] (https://github.com/mkrum/TFSamples/blob/master/quadratic.py)
 
 Classical Python Solution:
 <pre><code>
@@ -117,7 +116,7 @@ This tutorial assumes the reader understands at some level the functionality of 
 [here] (http://deeplearning.net/tutorial/lenet.html)
 and [here] (http://cs231n.github.io/convolutional-networks/)
 
-The full code can be found (here) [https://github.com/mkrum/TFSamples/blob/master/mnistexampl.py]
+The full code can be found [here] (https://github.com/mkrum/TFSamples/blob/master/mnistexample.py)
 
 
 ###4.2.	Loading the Data
@@ -126,14 +125,14 @@ Correctly loading the data into the network will be one of the most time consumi
 <pre><code>
 from tensorflow.examples.tutorials.mnist import input_data 
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
-</pre></code>
+</code></pre>
 
 When you build your own network, you will need to convert the images into numpy arrays of floats scaled between 0 and 1. The next step is relatively straightforward, declaring the placeholders. 
 
 <pre><code>
 x = tf.placeholder(tf.float32, shape=[None, 784])
 y_ = tf.placeholder(tf.float32, shape=[None, 10])
-</pre></code>
+</code></pre>
 
 x is the image data. It is of shape [None, 784], because it is not specifying the number of images, but it is specifying the they will be of size 784 (total number of pixels in a 28 by 28 greyscale image). y_ is the labels. It is of shape [None, 10] because again, it is not specifying the number of images, but it is specifying the size of the label, which is ten. The label is of size ten because it is being store as a one-hot representation of each digit. This means that 0 is 1000000000, 1 is 0100000000, 2 is 0010000000, and so on. Next, we declare some useful functions for later in the program.
 
@@ -145,7 +144,7 @@ def weight_variable(shape):
 def bias_variable(shape):
       initial = tf.constant(0.1, shape=shape)
       return tf.Variable(initial)
-</pre></code>
+</code></pre>
 
 These functions are just shortcuts for the declaration of weights and bias variables that will be used in the network. Both functions return variables of the requested shape. Weights are randomized using the tf.truncated_normal function, which generates random values. Biases are all initialized at a constant value of 0.1. Next we declare the functions that while define the behavior of this network.
 
@@ -156,6 +155,7 @@ def conv2d(x, W):
 def max_pool_2x2(x):
       return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                            	  strides=[1, 2, 2, 1], padding='SAME')
+                           	  
 </code></pre>
 	
 Since TensorFlow is a deep learning package, it has many built in functions that are incredibly helpful. Here we see two examples of this. Building a 2-d convolutional layer is accomplished in a single line. This function, conv2d, takes in two parameters, x and W. x is the input to the convolutional layer and W is the weights. The strides are the distance the kernel moves in each direction. SAME means that padding is added along to the edges to make the shapes match as needed. VALID means no padding. The max-pooling layer only takes in the input value, and then returns the modified value. Remember that this value is now of size (width/2.0, height/2.0).  The ksize parameter modifies the size of the values incorporated in the pool. The strides in this case will usually be the same size of the kernel, so each maximum value depends on a wholly independent 2 by 2 square. 
