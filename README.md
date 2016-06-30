@@ -30,11 +30,11 @@ The TensorFlow setup on the CRC machines is optimized for its GPU, making it muc
 
 job.script:
 <code>
-#!/bin/csh  
-#$ -q gpu@qa-titanx-001  
-#$ -M <your email>
-#$ -m abe  
-#$ -N <name of your job>
+\#!/bin/csh  
+\#$ -q gpu@qa-titanx-001  
+\#$ -M <your email>
+\#$ -m abe  
+\#$ -N <name of your job>
    
 module load python/2.7.11  
 module load tensorflow/0.8  
