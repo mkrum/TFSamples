@@ -1,0 +1,13 @@
+#!/bin/csh  
+#$ -q gpu@qa-titanx-001  
+#$ -M <your email>
+#$ -m abe  
+#$ -N <name of your job>
+   
+module load python/2.7.11  
+module load tensorflow/0.8  
+module load cuda/7.5  
+module load cudnn/v4    
+setenv CUDA_VISIBLE_DEVICES 0 
+
+./tfscript.py
