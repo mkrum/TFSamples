@@ -43,7 +43,7 @@ module load cudnn/v4
 setenv CUDA_VISIBLE_DEVICES 0 
 
 ./tfscript.py
-<\code><\pre>
+<\pre><\code>
 
 If you want to run two scripts at once, make sure to have the CUDA_VISIBLE_DEVICES set to different values  (0 or 1).
 
