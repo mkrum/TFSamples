@@ -111,7 +111,7 @@ TensorFlow works in two main steps. First, you have to define the graph. Conside
 
 ##4.	MNIST Expert Example Walk Through 
 ###4.1.	I will be going through the tutorial available (here) [https://www.tensorflow.org/versions/r0.9/tutorials/mnist/pros/index.html]
-You may want to also consider reading through the (beginner version) [https://www.tensorflow.org/versions/r0.9/tutorials/mnist/beginners/index.html]
+You may want to also consider reading through the [beginner version] (https://www.tensorflow.org/versions/r0.9/tutorials/mnist/beginners/index.html)
 This tutorial assumes the reader understands at some level the functionality of a convolutional neural network. If this is not the case, I recommend the following introductory reasources:
 [here] (http://deeplearning.net/tutorial/lenet.html)
 and [here] (http://cs231n.github.io/convolutional-networks/)
