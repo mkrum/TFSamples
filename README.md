@@ -7,24 +7,24 @@ This repository is for a small intro tutorial into Tensorflow to be used in a ne
 These instructions assume that you are using python 2.7 on a 64-bit CPU only machine.
 
 Mac: 
-
+<pre><code>
 $ sudo easy_install –upgrade six
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py2-none-any.whl 
 $ sudo pip install --upgrade $TF_BINARY_URL 
-
+</code></pre>
 		
 Linux:
-
+<pre><code>
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl 
 $ sudo pip install --upgrade $TF_BINARY_URL 
-
+</code></pre>
 Methods for using virtualenv, anaconda, and docker can be found (here) [https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html]
 
 ###1.2.	CRC Machines
 
 The TensorFlow setup on the CRC machines is optimized for its GPU, making it much faster. To run a TensorFlow program on a CRC machine, use the following template for your job script:
 
-job.script:
+(job.script) [https://github.com/mkrum/TFSamples/blob/master/job.script]:
 
 <pre><code>
 
@@ -50,13 +50,13 @@ setenv CUDA_VISIBLE_DEVICES 0
 If you want to run two scripts at once, make sure to have the CUDA_VISIBLE_DEVICES set to different values  (0 or 1).
 
 You submit job scripts by using the command:
-
+<pre><code>
 qsub job.script
-
+</pre></code>
 ###1.3.	Test Installation
 To ensure your setup works, attempt to run the following code:
 
-<helloworld.py>:
+(helloworld.py) [https://github.com/mkrum/TFSamples/blob/master/helloworld.py]:
 
 <pre><code>
 
@@ -74,7 +74,7 @@ TensorFlow™ is an open source software library for numerical computation using
 ##3.	TensorFlow Tutorial
 ###3.1.	Writing code in TensorFlow isn’t like other python programs. Here is a small example using the quadratic equation:
 
-<quadratic.py>:
+(quadratic.py) [https://github.com/mkrum/TFSamples/blob/master/quadratic.py]:
 
 Classical Python Solution:
 <pre><code>
@@ -89,7 +89,6 @@ Classical Python Solution:
 </code></pre>
 	TensorFlow Solution:
 <pre><code>
-
  		import tensorflow as tf
   		#define the inputs for the graph
   		a = tf.placeholder(tf.float32)
@@ -116,7 +115,9 @@ TensorFlow works in two main steps. First, you have to define the graph. Conside
 You may want to also consider reading through the (beginner version) [https://www.tensorflow.org/versions/r0.9/tutorials/mnist/beginners/index.html]
 This tutorial assumes the reader understands at some level the functionality of a convolutional neural network. If this is not the case, I recommend the following introductory reasources:
 [here] (http://deeplearning.net/tutorial/lenet.html)
-[and here] (http://cs231n.github.io/convolutional-networks/)
+and [here] (http://cs231n.github.io/convolutional-networks/)
+
+The full code can be found (here) [https://github.com/mkrum/TFSamples/blob/master/mnistexampl.py]
 
 
 ###4.2.	Loading the Data
@@ -127,7 +128,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
 </pre></code>
 
-When you build your own network, you will need to convert the images into numpy arrays of floats scaled between 0 and 1. I will comment more on this later. The next step is relatively straightforward, declaring the placeholders. 
+When you build your own network, you will need to convert the images into numpy arrays of floats scaled between 0 and 1. The next step is relatively straightforward, declaring the placeholders. 
 
 <pre><code>
 x = tf.placeholder(tf.float32, shape=[None, 784])
