@@ -245,3 +245,22 @@ with tf.Session() as sess:
              x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0}))
 </code></pre>
 This will print the accuracy every 100 steps and the test accuracy after 20,000 steps. 
+##5 Project
+Project
+
+1)	Create a data handing program that will accomplish the following things
+
+	a)	Load the images and labels from a file
+
+	b)	Split the data into randomized training and testing sets
+
+	c)	Convert the images into a numpy array
+
+	d)	Easily obtain batches of specific size for both the train and test
+
+2)	Create a network with three convolutional layers and one fully connected layer that can handle images from your dataset. Feel free to use the example above as a base. Pick some arbitrary, but reasonable values for your variables
+
+3)	Record your results for the initial network. Begin to start to experiment with various different network structures and variable values. Record your results from all of the experiments and visualize them. 
+
+4)	Write a short report about what you found to be the optimal structure along with the effects you found various changes had on your network. Try to explain the reasons behind any differences you observed. Include graphs to give a visual representation of the changes.
+
