@@ -1,5 +1,5 @@
 #TensorFlow 
-This repository is for a small intro tutorial into Tensorflow to be used in a neural network clas at the University of Notre Dame.
+This repository is for a small intro tutorial into Tensorflow to be used in a neural network class at the University of Notre Dame.
 
 ##1.	Installation
 
